@@ -54,12 +54,12 @@
                         $file_size = $_FILES['fileToUpload']['size'];
                         $tmp_name = $_FILES['fileToUpload']['tmp_name'];
                         $file_type = $_FILES['fileToUpload']['type'];
-                        $file_ext = end(explode('.', $file_name));
-
+                        $file_ext = explode('.', $file_name);
+                        $error = array();
                         $extension = array('jpg', 'jpeg', 'png');
 
                         if (in_array($file_ext, $extension) == false) {
-                            echo $error[] = "This file format is not allowed , Please try jpg,png and jpeg";
+
                         }
                         if ($file_size > 2000000) {
                             $error = "This file is too big, try within 2MB!";
@@ -79,12 +79,8 @@
                     $author = $_SESSION['id'];
 
                     $query1 = "INSERT INTO post(post_title,post_desc,post_category,post_image,post_date,author) VALUES('{$post_title}','{$post_des}' , '{$post_category}' , '{$new_name}' , '{$post_time}' , '{$author}');";
-                    $result1 .= "UPDATE category SET post = post + 1 WHERE id = {$post_category}";
+                    $query1 .= "UPDATE category SET post = post + 1 WHERE  category.id  = {$post_category}";
                     $result1 = mysqli_multi_query($connection, $query1) or die("errors");
-
-                    if ($result1) {
-                        header("location: post.php");
-                    }
                 }
                 ?>
 

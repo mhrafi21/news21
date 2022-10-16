@@ -30,10 +30,7 @@
 
                             LEFT JOIN category ON post.post_category = category.id
                             LEFT JOIN user ON post.author = user.id
-
-
-                            
-                            ";
+                            ORDER BY post.post_id DESC ";
 
                             $result6  = mysqli_query($connection, $query6) or die("error");
                             if (mysqli_num_rows($result6) > 0) {
@@ -47,15 +44,15 @@
                                  <tr>
                                      <td class='id'><?php echo $row['post_id'] ?></td>
 
-                                     <td><img height=""><?php echo $row['post_image'] ?></td>
+                                     <td><img src ="upload/<?php echo $row['post_image']?>" height="150px"></td>
                                      <td><?php echo $row['post_title'] ?></td>
                                      <td><?php echo $row['category_name'] ?></td>
                                      <td><?php echo $row['post_desc'] ?></td>
                                      <td><?php echo $row['post_date'] ?></td>
                                      <td><?php echo $row['user'] ?></td>
 
-                                     <td class='edit'><a href=''><i class='fa fa-edit'></i></a></td>
-                                     <td class='delete'><a onclick="return confirm('Are u confirm?')" href='delete-post.php?id=<?php echo $row['post_id'] ?>'><i class='fa fa-trash-o'></i></a></td>
+                                     <td class='edit'><a href='update-post.php?updateId=<?php echo $row["post_id"]?>'><i class='fa fa-edit'></i></a></td>
+                                     <td class='delete'><a onclick="return confirm('Are u confirm?')" href='delete-post.php?id=<?php echo $row['post_id']?>&catid=<?php echo $row['post_category']?>'><i class='fa fa-trash-o'></i></a></td>
 
 
                                  </tr>
@@ -72,12 +69,6 @@
                  <ul class='pagination admin-pagination'>
 
                      <li><a href="">1</a></li>
-
-
-                     <li class=''><a href="">2</a></li>
-
-
-                     <li><a href="">3</a></li>
 
                  </ul>
 
