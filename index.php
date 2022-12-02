@@ -1,8 +1,11 @@
 <?php include 'header.php'; ?>
+
 <div id="main-content">
     <div class="container">
         <div class="row">
             <div class="col-md-8">
+                <h3 class="py-6">All Post</h3>
+
                 <!-- post-container -->
 
 

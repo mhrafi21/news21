@@ -34,7 +34,7 @@
                                         <?php echo $row['post_date'] ?>
                                     </span>
                                 </div>
-                                <img class="single-feature-image" src="images/post_1.jpg" alt="" />
+                                <img class="single-feature-image" src="admin/upload/<?php echo $row['post_image']?>" alt="" />
                                 <p class="description">
                                     <?php echo $row['post_desc'] ?>
                                 </p>
